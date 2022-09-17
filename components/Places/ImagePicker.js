@@ -6,13 +6,12 @@ import {
 } from 'expo-image-picker';
 
 function ImagePicker() {
-    const [cameraPermissionInformation, requestPermission] =
-        useCameraPermissions();
+    const [cameraPermissionInformation, requestPermission] = useCameraPermissions();
 
     async function verifyPermissions() {
         if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
             const permissionResponse = await requestPermission();
-
+            // console.log(permissionResponse.status)
             return permissionResponse.granted;
         }
 
