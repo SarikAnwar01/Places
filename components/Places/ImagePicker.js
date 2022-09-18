@@ -11,7 +11,7 @@ function ImagePicker() {
     async function verifyPermissions() {
         if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
             const permissionResponse = await requestPermission();
-            // console.log(permissionResponse.status)
+
             return permissionResponse.granted;
         }
 
