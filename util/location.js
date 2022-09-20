@@ -6,3 +6,11 @@ export function getMapPreview(lat, lon) {
 
     return imagePreviewUrl;
 }
+
+const Map_Box = "pk.eyJ1Ijoic2FyaWthbndhciIsImEiOiJja3ZhdjZraXQwOXRoMzFxZ3d2MHdpa3RmIn0.WDKdW0rm8nfgCIzRmf_8GA"
+
+export function MapBox(lat, lon) {
+    const imagePreviewUrla = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${lat},${lon},0,60/400x200?access_token=pk.eyJ1Ijoic2FyaWthbndhciIsImEiOiJja3ZhdjZraXQwOXRoMzFxZ3d2MHdpa3RmIn0.WDKdW0rm8nfgCIzRmf_8GA`;
+    return imagePreviewUrla;
+
+}

@@ -3,7 +3,7 @@ import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } f
 import { Colors } from "../../constant/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 import { useEffect, useState } from "react";
-import { getMapPreview } from "../../util/location";
+import { getMapPreview, MapBox } from "../../util/location";
 import { useNavigation, useRoute, useIsFocused } from "@react-navigation/native";
 function LocationPicker() {
     const [userlocation, setUserLocation] = useState();
@@ -57,7 +57,7 @@ function LocationPicker() {
 
     let locationPreview = <Text>No Location</Text>;
     if (userlocation) {
-        locationPreview = <Image style={styles.mapPreviewImage} source={{ uri: getMapPreview(userlocation.lat, userlocation.lon) }} />
+        locationPreview = <Image style={styles.mapPreviewImage} source={{ uri: MapBox(userlocation.lat, userlocation.lon) }} />
 
     }
 
