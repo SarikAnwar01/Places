@@ -12,7 +12,7 @@ function LocationPicker() {
     const navigation = useNavigation();
     const route = useRoute();
 
-    const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
+    const [locationPermissionInformation, requestPermission] = useForegroundPermissions();   //permission issue is back 
 
 
 
