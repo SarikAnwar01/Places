@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Colors } from '../../constant/colors';
 import OutlinedButton from '../UI/OutlinedButton';
 
+
 function ImagePicker(props) {
     const [pickedImage, setPickedImage] = useState();
 
