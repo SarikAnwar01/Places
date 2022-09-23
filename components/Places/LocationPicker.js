@@ -5,14 +5,14 @@ import OutlinedButton from "../UI/OutlinedButton";
 import { useEffect, useState } from "react";
 import { getMapPreview, MapBox } from "../../util/location";
 import { useNavigation, useRoute, useIsFocused } from "@react-navigation/native";
-function LocationPicker() {
+function LocationPicker({ onPickLocation }) {
     const [userlocation, setUserLocation] = useState();
     const isFocused = useIsFocused();
 
     const navigation = useNavigation();
     const route = useRoute();
 
-    const [locationPermissionInformation, requestPermission] = useForegroundPermissions();   //permission issue is back 
+    const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
 
 
 
@@ -24,6 +24,12 @@ function LocationPicker() {
         }
 
     }, [route, isFocused])
+
+    useEffect(() => {
+        onPickLocation(userlocation);
+
+    }, [userlocation, onPickLocation])
+
     async function verifyPermissions() {
         if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
             const permissionResponse = await requestPermission();
@@ -47,6 +53,8 @@ function LocationPicker() {
             lat: location.coords.latitude,
             lon: location.coords.longitude
         });
+
+
 
     }
 
