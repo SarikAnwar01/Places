@@ -3,7 +3,7 @@ import { getCurrentPositionAsync, useForegroundPermissions, PermissionStatus } f
 import { Colors } from "../../constant/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 import { useEffect, useState } from "react";
-import { getMapPreview, MapBox } from "../../util/location";
+import { getAddress, getMapPreview, MapBox } from "../../util/location";
 import { useNavigation, useRoute, useIsFocused } from "@react-navigation/native";
 function LocationPicker({ onPickLocation }) {
     const [userlocation, setUserLocation] = useState();
@@ -26,7 +26,14 @@ function LocationPicker({ onPickLocation }) {
     }, [route, isFocused])
 
     useEffect(() => {
-        onPickLocation(userlocation);
+        async function handleLocation() {
+
+            if (userlocation) {
+                const address = await getAddress(userlocation.lat, userlocation.lon)
+                onPickLocation({ ...userlocation, address: address });
+            }
+        }
+        handleLocation();
 
     }, [userlocation, onPickLocation])
 

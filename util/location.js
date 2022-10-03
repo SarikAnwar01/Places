@@ -14,3 +14,17 @@ export function MapBox(lat, lon) {
     return imagePreviewUrla;
 
 }
+
+export async function getAddress(lat, lon) {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${GOOGLE_API_KEY}`
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch address!!!");
+    }
+
+    const data = await response.json();
+    const address = data.results[0].formatted_address;
+    return address;
+
+}
